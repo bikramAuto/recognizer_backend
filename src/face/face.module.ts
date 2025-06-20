@@ -7,13 +7,7 @@ import * as multer from 'multer';
 @Module({
   imports: [
     MulterModule.register({
-      dest: './uploads', 
-      storage: multer.diskStorage({
-        destination: './uploads',
-        filename: (req, file, cb) => {
-          cb(null, `${Date.now()}-${file.originalname}`);
-        },
-      }),
+      storage: multer.memoryStorage(),
     }),
   ],
   controllers: [FaceController],
